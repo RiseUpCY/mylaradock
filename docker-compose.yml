@@ -147,8 +147,12 @@ services:
         - ./php-worker/supervisord.d:/etc/supervisord.d
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
+        - "service.firmoo.test:172.19.0.1"
+        - "api.firmoo.test:172.19.0.1"
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
+        - "8081:8081"
+        - "8080:8080"
       tty: true
       environment:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
@@ -231,6 +235,8 @@ services:
         - "9000"
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
+        - "service.firmoo.test:172.19.0.1"
+        - "api.firmoo.test:172.19.0.1"
       environment:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
         - DOCKER_HOST=tcp://docker-in-docker:2375
@@ -274,6 +280,8 @@ services:
         - workspace
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
+        - "service.firmoo.test:172.19.0.1"
+        - "api.firmoo.test:172.19.0.1"
       networks:
         - backend
 ### Laravel Horizon ############################################
@@ -297,6 +305,8 @@ services:
         - workspace
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
+        - "service.firmoo.test:172.19.0.1"
+        - "api.firmoo.test:172.19.0.1"
       networks:
         - backend
 
